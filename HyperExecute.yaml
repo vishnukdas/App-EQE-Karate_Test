@@ -1,0 +1,22 @@
+---
+version: 0.1
+project:
+  name: 'demo-project'      #project name
+  id: '1abc2345-56de-7890-f1cg-h2ij34k56789'      #project id
+
+image: karate
+
+concurrency: 1
+runson: linux
+autosplit: true
+
+pre:
+  - mvn dependency:resolve -s settings.xml
+
+testDiscovery:
+  mode: remote
+  command: echo test
+
+testRunnerCommand: mvn test -Dtest=$test -s settings.xml
+
+jobLabel: [karate,wf,sample,mvn]
